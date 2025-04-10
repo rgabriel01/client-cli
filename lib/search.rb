@@ -6,11 +6,6 @@ class Search
   attr_reader :query, :data_source, :debug_mode
 
   def self.call(query:, debug_mode:)
-    if query.empty?
-      puts 'Please provide a search query.'
-      return
-    end
-
     new(query: query, debug_mode: debug_mode).perform_search
   end
 
@@ -23,8 +18,8 @@ class Search
   def perform_search
     results = search
 
-    byebug
     display_results(results) if debug_mode
+
     results
   end
 

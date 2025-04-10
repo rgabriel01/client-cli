@@ -1,4 +1,5 @@
 require_relative 'lib/search'
+require_relative 'lib/check'
 require 'byebug'
 require 'optparse'
 
@@ -14,7 +15,7 @@ options = {
 }
 
 parser = OptionParser.new do |opts|
-  opts.banner = "Usage: search_cli.rb [ -m mode | -q query | -d debug ]"
+  opts.banner = "Usage: client_cli.rb [ -m mode | -q query | -d debug ]"
 
   opts.on("-h", "--help", "Display the commands") do
     puts opts
@@ -38,7 +39,7 @@ parser.parse!(ARGV)
 
 case options[:mode]
 when 'check'
-  puts 'Do email check!'
+  Check.call(debug_mode: options[:debug_mode])
 when 'search'
   Search.call(query: options[:query], debug_mode: options[:debug_mode])
 else
