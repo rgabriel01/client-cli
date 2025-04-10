@@ -28,5 +28,13 @@ RSpec.describe Check do
         end
       end
     end
+
+    context 'when duplicate are not found' do
+      it 'returns an empty array' do
+        raw = Check.call(debug_mode: false, data_source: [])
+
+        expect(raw.size).to eq(0)
+      end
+    end
   end
 end

@@ -1,7 +1,8 @@
-require_relative 'lib/search'
-require_relative 'lib/check'
-require 'byebug'
+# ruby bin/client_cli.rb -m search -q john -d true
+require 'json'
 require 'optparse'
+
+require_relative '../lib/client_manager'
 
 data_source = JSON.parse(File.read('lib/clients.json'))
 
@@ -48,3 +49,5 @@ else
   puts 'Invalid mode. Use --help for usage information.'
   exit
 end
+
+ClientManager.new(data_source:, options:).run
