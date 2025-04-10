@@ -4,12 +4,11 @@ require 'JSON'
 class Check
   attr_reader :data_source, :grouped_data_source, :debug_mode
 
-  def self.call(debug_mode:)
-    new(debug_mode: debug_mode).perform_check
+  def self.call(debug_mode:, data_source:)
+    new(debug_mode: debug_mode, data_source: data_source).perform_check
   end
 
-  def initialize(debug_mode:)
-    @data_source = JSON.parse(File.read('lib/clients.json'))
+  def initialize(debug_mode:, data_source:)
     @grouped_data_source = data_source.group_by {|data| data['email']}
     @debug_mode = debug_mode
   end

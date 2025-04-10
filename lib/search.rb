@@ -5,12 +5,12 @@ require 'JSON'
 class Search
   attr_reader :query, :data_source, :debug_mode
 
-  def self.call(query:, debug_mode:)
-    new(query: query, debug_mode: debug_mode).perform_search
+  def self.call(query:, debug_mode:, data_source:)
+    new(query: query, debug_mode: debug_mode, data_source: data_source).perform_search
   end
 
-  def initialize(query:, debug_mode:)
-    @data_source = JSON.parse(File.read('lib/clients.json'))
+  def initialize(query:, debug_mode:, data_source:)
+    @data_source = data_source
     @query = query.downcase
     @debug_mode = debug_mode
   end

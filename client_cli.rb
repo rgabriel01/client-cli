@@ -3,6 +3,8 @@ require_relative 'lib/check'
 require 'byebug'
 require 'optparse'
 
+data_source = JSON.parse(File.read('lib/clients.json'))
+
 if ARGV.empty?
   puts 'Please provide a search query.'
   exit
@@ -39,9 +41,9 @@ parser.parse!(ARGV)
 
 case options[:mode]
 when 'check'
-  Check.call(debug_mode: options[:debug_mode])
+  Check.call(debug_mode: options[:debug_mode], data_source:)
 when 'search'
-  Search.call(query: options[:query], debug_mode: options[:debug_mode])
+  Search.call(query: options[:query], debug_mode: options[:debug_mode], data_source:)
 else
   puts 'Invalid mode. Use --help for usage information.'
   exit

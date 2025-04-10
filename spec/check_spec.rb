@@ -9,13 +9,13 @@ RSpec.describe Check do
 
     context 'when debug_mode is true' do
       it 'outputs a message to stdout (puts)' do
-        expect { Check.call(debug_mode: true) }.to output(/Check results for duplicate email addresses:/).to_stdout
+        expect { Check.call(debug_mode: true, data_source:) }.to output(/Check results for duplicate email addresses:/).to_stdout
       end
     end
 
     context 'when duplicate emails are found' do
       it 'returns an array of email addresses that have duplicates' do
-        raw = Check.call(debug_mode: false)
+        raw = Check.call(debug_mode: false, data_source:)
 
         grouped_data_source = data_source.group_by {|data| data['email']}
         expected_results = grouped_data_source.keys.select do |email|
