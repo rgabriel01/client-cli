@@ -1,6 +1,4 @@
 # lib/search.rb
-require 'byebug'
-require 'JSON'
 
 class Search
   attr_reader :query, :data_source, :debug_mode

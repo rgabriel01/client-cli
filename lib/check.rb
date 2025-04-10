@@ -1,5 +1,4 @@
 # lib/check.rb
-require 'JSON'
 
 class Check
   attr_reader :data_source, :grouped_data_source, :debug_mode

@@ -40,14 +40,4 @@ end
 
 parser.parse!(ARGV)
 
-case options[:mode]
-when 'check'
-  Check.call(debug_mode: options[:debug_mode], data_source:)
-when 'search'
-  Search.call(query: options[:query], debug_mode: options[:debug_mode], data_source:)
-else
-  puts 'Invalid mode. Use --help for usage information.'
-  exit
-end
-
 ClientManager.new(data_source:, options:).run
