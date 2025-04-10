@@ -1,5 +1,5 @@
 # lib/check.rb
-require 'byebug'
+
 class Check
   attr_reader :data_source, :grouped_data_source
 
@@ -24,6 +24,6 @@ class Check
 
     with_duplicates.map do |email|
       grouped_data_source[email]
-    end
+    end.flatten
   end
 end
