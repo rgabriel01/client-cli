@@ -11,7 +11,7 @@ class Search
 
   def initialize(query:, debug_mode:)
     @data_source = JSON.parse(File.read('lib/clients.json'))
-    @query = query
+    @query = query.downcase
     @debug_mode = debug_mode
   end
 
