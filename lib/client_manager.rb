@@ -10,6 +10,7 @@ class ClientManager
   end
 
   def run
+    puts "#{options.inspect}"
     case options[:mode]
     when 'check'
       results = Check.call(data_source: data_source)
@@ -20,7 +21,7 @@ class ClientManager
         puts result.inspect
       end
     when 'search'
-      results = Search.call(query: options[:query], data_source: data_source)
+      results = Search.call(query: options[:query], data_source: data_source, field: options[:field])
 
       puts "Search results for '#{options[:query]}':"
       results.each { |result| puts result }
